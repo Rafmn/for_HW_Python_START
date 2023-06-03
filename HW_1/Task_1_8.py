@@ -5,6 +5,8 @@
 n = int(input("Сколько рядов у елки?: "))
 
 stars = 1
-for i in range(1, n + 1):
-    print(" " * (n-i), "*"*stars)
+
+for i in range(0, n):
+    space = n-i-1
+    print(" " * space, "*" * stars, sep='')
     stars += 2
