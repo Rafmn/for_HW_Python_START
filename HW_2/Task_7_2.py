@@ -31,5 +31,5 @@ sixth += str(num)
 sixth = sixth[::-1]
 
 print(num_hex, '->', sixth)
-print('Проверка', hex(num_hex)[2:].upper())
+print('Проверка:', hex(num_hex)[2:].upper())
     
