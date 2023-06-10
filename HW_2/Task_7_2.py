@@ -23,8 +23,6 @@ while num > 16:
             a = 'E'
         case 15:
             a = 'F'
-        case _:
-            pass
     sixth += str(a)
 
 sixth += str(num)
