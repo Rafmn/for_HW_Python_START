@@ -9,7 +9,7 @@ sixth = ''
 
 while num > 16:
     a = num % 16
-    num = num // 16
+    num //= 16
     match a:
         case 10:
             a = 'A'
