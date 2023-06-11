@@ -7,6 +7,8 @@
 
 text = sorted(input("Ввведите текст: ").split())
 
+n = len(max(text, key=len))
+print(n)
 for i in range(1, len(text)+1):
-    print(i, text[i-1].rjust(len(max(text))+1))
+    print(i, text[i-1].rjust(n))
 
