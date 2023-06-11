@@ -9,7 +9,7 @@ sixth = ''
 
 while num > 16:
     a = num % 16
-    num = num // 16
+    num //= 16
     match a:
         case 10:
             a = 'A'
@@ -23,8 +23,6 @@ while num > 16:
             a = 'E'
         case 15:
             a = 'F'
-        case _:
-            pass
     sixth += str(a)
 
 sixth += str(num)
