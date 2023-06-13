@@ -349,15 +349,15 @@ for p in string.punctuation:  # очистка от знаков пунктуа�
 
 list_of_the_text = text.lower().split() 
 
-dict = {}
+dict_letters = {}
 unions = 3
 for i in list_of_the_text:  # удаление строк не являющимися словами и союзов "и", "на" и т.п.
     if not i.isalpha() or len(i) <= unions:
         list_of_the_text.remove(i)
         continue
-    if not i in dict:
-        dict[list_of_the_text.count(i)] = i.capitalize()
+    if not i in dict_letters:
+        dict_letters[list_of_the_text.count(i)] = i.capitalize()
 
-sorted_list= sorted(dict.items(), reverse=True)[:11]
+sorted_list= sorted(dict_letters.items(), reverse=True)[:11]
 for i in range(1, 11):
     print(f'{i}. {sorted_list[i-1][1]} - {sorted_list[i-1][0]}')
