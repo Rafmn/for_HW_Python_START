@@ -4,10 +4,14 @@
 # прибыльные, верните истину, а если хотя бы одна убыточная — ложь.
 
 def profit(dict_com):
-    prof_list = []
-    for v in dict_com.values():
-        prof_list.append(sum(v))
+    # prof_list = []
+    # for v in dict_com.values():
+    #     prof_list.append(sum(v))
+    prof_list = map(sum, dict_com.values())
+
     return all(x>=0 for x in prof_list)
+    # prof_list = all(x>=0 for x in map(sum, dict_com.values()))
+    # return prof_list
 
 
 dict_companies = dict(company_1=[45, -4, 56, 67, -3], comp_2=[56, -56, 34, 9],\
