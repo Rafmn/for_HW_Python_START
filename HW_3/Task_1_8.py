@@ -10,11 +10,7 @@
 # с множествами. Код должен расширяться
 # на любое большее количество друзей.
 
-<<<<<<< HEAD
-dict = dict(Anton==('ball', 'cup', 'spoon', 'fork'), Igor=('spoon', 'fork', 'cup'), Rinat=('book', 'kompas', 'map', 'cup', 'ball'))
-=======
-dict = dict(Anton(ball', 'cup', 'spoon', 'fork'), Igor=('spoon', 'fork', 'cup'), Rinat=('book', 'kompas', 'map', 'cup', 'ball'))
->>>>>>> 6d839a6 (Update Task_1_8.py)
+dict = dict(Anton=('ball', 'cup', 'spoon', 'fork'), Igor=('spoon', 'fork', 'cup'), Rinat=('book', 'kompas', 'map', 'cup', 'ball'))
 
 a_list = [] # Списки в одном списке
 for value in dict.values():
