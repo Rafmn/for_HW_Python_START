@@ -3,9 +3,6 @@
 # все операции поступления и снятия средств в список.
 
 
-from secrets import choice
-
-
 START_SUM = 0
 count = 0
 history = []
@@ -66,21 +63,31 @@ def exit(account):
     print("Сумма на счету:", account, "у.е.")
     print("История всех операций: ", history)
 
+
+def nalog(account):
+    account -= (account - 5_000_000) * 0.1
+    return account
+
 account = START_SUM
 while True:
-    choice = input("Выберете действие: 1 - пополнить, 2 - снять, 3 - выйти: ")
-    if account > 5_000_000:
-        account -= (account - 5_000_000) * 0.1
-        history.append(-(account - 5_000_000) * 0.1)
-    match choice:
+    achoice = input("Выберете действие: 1 - пополнить, 2 - снять, 3 - выйти: ")
+    match achoice:
         case '1':
             account, count = add_money(account, count)
+            if account > 5_000_000:
+                account = nalog(account)
+                history.append(-(account - 5_000_000) * 0.1)
             print("Сумма на счету:", account, "у.е.")
         case '2':
             account, count = pop_money(account, count)
+            if account > 5_000_000:
+                account = nalog(account)
+                history.append(-(account - 5_000_000) * 0.1)
             print("Сумма на счету:", account, "у.е.")
         case '3':
             exit(account)
-            break
         case _:
+            if account > 5_000_000:
+                account = nalog(account)
+                history.append(-(account - 5_000_000) * 0.1)
             print("Неверный ввод. Сумма на счету:", account, "у.е.")

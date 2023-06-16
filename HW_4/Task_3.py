@@ -6,9 +6,13 @@
 def f_dict(**args):
     new_dict = {}
     for v, k in args.items():
-        try:
+        # try:
+        #     new_dict[k] = v
+        # except TypeError:
+        #     new_dict[str(k)] = v
+        if k.__hash__:
             new_dict[k] = v
-        except TypeError:
+        else:
             new_dict[str(k)] = v
         
     return new_dict

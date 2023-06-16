@@ -3,9 +3,10 @@
 def trans_matrix(a_matrix):
     tr_matrix = []
     for i in range(len(a_matrix[0])):
-        ls = []
-        for j in range(len(a_matrix)):
-            ls.append(a_matrix[j][i])
+        # ls = []
+        # for j in range(len(a_matrix)):
+        #     ls.append(a_matrix[j][i])
+        ls = [a_matrix[j][i] for j in range(len(a_matrix))]
         tr_matrix.append(ls)
     return(tr_matrix)
 
