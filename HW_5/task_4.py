@@ -3,15 +3,17 @@
 '''
 
 
-def factorial(number):
+def fibon(number):
     '''
-    Факториал числа n.
+    Фибоначи числа n.
     '''
-    number = 1
-    for i in range(1, number + 1):
-        number *= i
-        yield number
+    numb = 1
+    last_num = 0
+    for i in range(number):
+        numb += last_num
+        last_num, numb = numb, last_num
+        yield numb
 
 
-for j, num in enumerate(factorial(10), start=1):
-    print(f'{j}! = {num}')
+for j, num in enumerate(fibon(10), start=1):
+    print(f'{j} = {num}')
