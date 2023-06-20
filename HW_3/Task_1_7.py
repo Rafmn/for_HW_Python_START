@@ -12,27 +12,26 @@
 
 text = input("Введите текст: ").lower()
 
-dict = {}
+adict = {}
 for letter in text:
     if letter == ' ':
         continue
-    elif not letter in dict:
-        dict[letter] = 1
+    elif not letter in adict:
+        adict[letter] = 1
     else:
-        dict[letter] = dict.get(letter) + 1
+        adict[letter] = adict.get(letter) + 1
 
-print(*dict.items())
+print(*adict.items())
 
 dict_count = {}
 for letter in text:
     if letter == ' ' or letter in dict_count:
         continue
     else:
-       n = text.count(letter)
-       dict_count[letter] = n
+        n = text.count(letter)
+        dict_count[letter] = n
 
 print(*dict_count.items())
-print(dict == dict_count)
+print(adict == dict_count)
 
-# Порядок вывода ключей полностью совпадает. 
-
+# Порядок вывода ключей полностью совпадает
