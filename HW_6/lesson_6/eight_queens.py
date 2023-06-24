@@ -12,11 +12,9 @@ def e_queens(args):
             if i != j:
                 b_1, b_2 = map(int, j.split())
                 if a_1 == b_1 or a_2 == b_2 or a_1 - b_2 == b_1 - b_2:
-                    flag = False
-                    break
-        if not flag:
-            break
-    return flag
+                    return False
+
+    return True
 
 
 def random_queens():
