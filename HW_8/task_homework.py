@@ -12,13 +12,15 @@ import json
 import csv
 import pickle
 
+# DIR = r'C:\Users\User\Documents\DeepingPython'
+DIR = r'/home/marat/GeekBrains/PythonDeeping/for_HW_Python_START-1'
 
 def files_dir(dir_):
     '''Составление списка папок и файлов'''
-    merge_dict = {}
+    merge_list = []
     for dir_path, dir_name, file_name in os.walk(dir_):
         # Родительская директория:
-        parent_dir = dir_path.rsplit('\\', 1)[-1]
+        parent_dir = dir_path.rsplit('/', 1)[-1]
         # Списки размеров файлов и папок:
         size_file = [os.stat(os.path.join(dir_path, file)).st_size for file in file_name]
         if dir_name:
@@ -32,32 +34,28 @@ def files_dir(dir_):
         for k, i in dir_name_info.items():
             dir_name_info[k] = [i, parent_dir, 'folder']
         # Объединение словарей в один:
-        merge_dict = {**merge_dict, **dir_name_info, **file_name_info}
-    # Переделка словарей в другой формат записи:
-    list_dicts = []
-    my_dict = {'Object': [], 'Size_bite': [], 'Parent_dir': [], 'Type': []}
-    for k, i in merge_dict.items():
-        my_dict['Object'] = k
-        my_dict['Size_bite'] = i[0]
-        my_dict['Parent_dir'] = i[1]
-        my_dict['Type'] = i[2]
-        list_dicts.append(my_dict.copy())
-    # print(list_dicts)
+        merge_dict = {**dir_name_info, **file_name_info}
+
+        list_dicts = change_dict(merge_dict)
+        for i in list_dicts:
+            merge_list.append(i)
+
+    print(merge_list)
 
     # Запись в json файл:
-    with open('HW_8/files_and_dirs.json', 'w', encoding='utf-8') as f:
-        json.dump(list_dicts, f)
+    with open('files_and_dirs.json', 'w', encoding='utf-8') as f:
+        json.dump(merge_list, f)
 
     # Запись в csv файл:
-    keys_my_dict = [k for k in list_dicts[0].keys()]
-    with open('HW_8/files_and_dirs.csv', 'a', encoding='utf-8', newline='') as csv_file:
+    keys_my_dict = [k for k in merge_list[0].keys()]
+    with open('files_and_dirs.csv', 'a', encoding='utf-8', newline='') as csv_file:
         writer = csv.DictWriter(csv_file, keys_my_dict)
         writer.writeheader()
-        writer.writerows(list_dicts)
+        writer.writerows(merge_list)
 
     # Запись в pickle файл:
-    with open('HW_8/files_and_dirs.pickle', 'wb') as f:
-        pickle.dump(list_dicts, f)
+    with open('files_and_dirs.pickle', 'wb') as f:
+        pickle.dump(merge_list, f)
     # res = pickle.dumps(list_dicts, protocol=pickle.DEFAULT_PROTOCOL)
     # print(res)
 
@@ -76,8 +74,19 @@ def size_of_dir(a_path, size_folder = 0):
             size_folder += sum_f
     return size_folder
 
-# DIR = r'C:\Users\User\Documents\DeepingPython'
-DIR = r'/home/marat/GeekBrains/PythonDeeping/for_HW_Python_START-1'
+
+def change_dict(a_dict):
+    '''Переделка словарей в другой формат записи:'''    
+    list_dicts = []
+    my_dict = {'Object': [], 'Size_bite': [], 'Parent_dir': [], 'Type': []}
+    for k, i in a_dict.items():
+        my_dict['Object'] = k
+        my_dict['Size_bite'] = i[0]
+        my_dict['Parent_dir'] = i[1]
+        my_dict['Type'] = i[2]
+        list_dicts.append(my_dict.copy())
+    return list_dicts
+
 
 if __name__ == '__main__':
     files_dir(DIR)
