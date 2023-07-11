@@ -22,6 +22,7 @@
 
 class Animals:
     '''Животные'''
+
     def __init__(self, name, tail):
         self.name = name
         self.tail = tail
@@ -33,6 +34,7 @@ class Animals:
 
 class Fish(Animals):
     '''Рыбы'''
+
     def __init__(self, fresh_water, deep, fin, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fin = fin
@@ -62,7 +64,8 @@ class Fish(Animals):
     def info_animal(self):
         '''Общая информация'''
         print(
-            f'''Наименование: {self.name}, Наличие хвоста: {self.tail}, Особенность плавника: {self.specific()} 
+            f'''Наименование: {self.name}, Наличие хвоста: {self.tail}, \
+                Особенность плавника: {self.specific()} 
                 Водоплавающее: {self.chek_water()}, Глубоководность: {self.chek_deep()}''')
 
 
@@ -113,13 +116,14 @@ class Dogs(Animals):
     def info_animal(self):
         '''Общая информация'''
         print(
-            f'Наименование: {self.name}, Наличие хвоста: {self.tail}, Прирученность: {self.check_home()}')
+            f'Наименование: {self.name}, Наличие хвоста: {self.tail}, \
+                Прирученность: {self.check_home()}')
 
-class Fabric():
+
+class Fabric:
     '''Фабрика классов'''
     def __init__(self, a_type_animal, *param, **kwargs) -> None:
         self.a_animal = a_type_animal(*param, **kwargs)
-
 
 shark = Fish('es', 2, 6, 'Shark', 'yep')
 print(f'Водоплавающее: {shark.chek_water()}',
@@ -132,7 +136,8 @@ murmur.info_animal()
 shark.info_animal()
 
 volf = Fabric(Dogs, 'Volf', 'yes', None)
-volf.a_animal.info_animal()
+print(volf.a_animal.info_animal())
 
 makaka = Fabric(Cats, 'Tiger', 2, 'Europe', 5)
 print(makaka.a_animal.check_home())
+print(makaka.a_animal.info_animal())
