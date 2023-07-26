@@ -73,8 +73,7 @@ class MyExteption(Exception):
     pass
 
 class SideExteption(MyExteption):
-    def __init__(self, side1, side2, *args: object) -> None:
-        super().__init__(*args)
+    def __init__(self, side1, side2) -> None:
         self.side1 = side1
         self.side2 = side2
 
